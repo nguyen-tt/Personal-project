@@ -64,6 +64,11 @@ function GameBoard() {
     }
   };
 
+  const calculatePercentage = (votes, totalVotes) => {
+    if (totalVotes === 0) return 0;
+    return ((votes / totalVotes) * 100).toFixed(2);
+  };
+
   return (
     <div>
       {gameOver ? (
@@ -77,6 +82,13 @@ function GameBoard() {
                 src={`${host}/assets/images/${image.img}`}
                 alt={image.title}
               />
+              <p>
+                {hasVoted &&
+                  ` ${calculatePercentage(
+                    image.vote,
+                    imagesFood.reduce((total, img) => total + img.vote, 0)
+                  )}%`}
+              </p>
               {selectedImage && <p>{image.vote} votes</p>}
             </div>
           ))}
