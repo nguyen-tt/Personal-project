@@ -18,10 +18,25 @@ class FoodsManager extends AbstractManager {
     );
   }
 
-  update(foods) {
+  update(title, img, vote, id) {
+    const setParts = [];
+    const requestParams = [];
+    if (title) {
+      setParts.push("title = ?");
+      requestParams.push(title);
+    }
+    if (img) {
+      setParts.push("img = ?");
+      requestParams.push(img);
+    }
+    if (vote) {
+      setParts.push("vote = ?");
+      requestParams.push(vote);
+    }
+    requestParams.push(id);
     return this.database.query(
-      `update ${this.table} set title = ?, img = ?, vote = ? where id = ?`,
-      [foods.title, foods.img, foods.vote, foods.id]
+      `update ${this.table} set ${setParts.join(", ")} where id = ?`,
+      requestParams
     );
   }
 }

@@ -25,11 +25,11 @@ function GameBoard() {
   }, [selectionCount]);
 
   const updateVote = (imageId, newVote) => {
+    console.log(imageId, newVote);
     axios
       .put(`${host}/foods/${imageId}`, { vote: newVote })
       .then(() => {
         console.log("Vote updated successfully!");
-        setHasVoted(true);
       })
       .catch((err) => {
         console.error(err);
@@ -52,6 +52,7 @@ function GameBoard() {
         });
 
         setImagesFood(updatedImages);
+        setHasVoted(true);
       }
     }
   };

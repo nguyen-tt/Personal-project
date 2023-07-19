@@ -43,12 +43,11 @@ const add = (req, res) => {
 };
 
 const edit = (req, res) => {
-  const foods = req.body;
-
-  foods.id = parseInt(req.params.id, 10);
+  const { id } = req.params;
+  const { title, img, vote } = req.body;
 
   models.foods
-    .update(foods)
+    .update(title, img, vote, id)
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);

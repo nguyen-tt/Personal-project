@@ -12,6 +12,9 @@ function NavBar() {
       <NavLink to="/summary" className="summary">
         summary
       </NavLink>
+      <NavLink to="/update-game" className="update-game">
+        update-game
+      </NavLink>
       <NavLink to="/contact" className="contact">
         contact
       </NavLink>
