@@ -2,6 +2,10 @@ const express = require("express");
 
 const router = express.Router();
 
+const multer = require("multer");
+
+const upload = multer({ dest: "./public/assets/images" });
+
 const itemControllers = require("./controllers/itemControllers");
 const foodsControllers = require("./controllers/foodsControllers");
 const usersControllers = require("./controllers/usersControllers");
@@ -14,7 +18,9 @@ router.delete("/items/:id", itemControllers.destroy);
 
 router.get("/foods", foodsControllers.browse);
 router.get("/foods/:id", foodsControllers.read);
-router.put("/foods/:id", foodsControllers.edit);
+router.put("/foods/:id", upload.single("image"), foodsControllers.edit);
+router.post("/foods", upload.single("image"), foodsControllers.add);
+router.delete("/foods/:id", foodsControllers.destroy);
 
 router.get("/users", usersControllers.browse);
 router.get("/users/:id", usersControllers.read);
