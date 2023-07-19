@@ -1,5 +1,7 @@
+import SummaryDetails from "@components/SummaryDetails";
+
 function Summary() {
-  return <h1>Summary</h1>;
+  return <SummaryDetails />;
 }
 
 export default Summary;

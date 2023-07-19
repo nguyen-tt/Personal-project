@@ -3,6 +3,7 @@
 /* eslint-disable no-restricted-syntax */
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function GameBoard() {
   const host = import.meta.env.VITE_BACKEND_URL;
@@ -72,16 +73,23 @@ function GameBoard() {
   return (
     <div>
       {gameOver ? (
-        <p>Fin du jeu</p>
+        <>
+          <p>Fin du jeu</p>
+          <Link to="/summary" className="endgame-button">
+            <button type="button">Voir les résultats</button>
+          </Link>
+        </>
       ) : (
         <>
           {imagesFood.map((image) => (
             <div key={image.id} onClick={() => handleSelect(image.id)}>
-              <span>{image.title}</span>
-              <img
-                src={`${host}/assets/images/${image.img}`}
-                alt={image.title}
-              />
+              <figure>
+                <img
+                  src={`${host}/assets/images/${image.img}`}
+                  alt={image.title}
+                />
+                <figcaption>{image.title}</figcaption>
+              </figure>
               <p>
                 {hasVoted &&
                   ` ${calculatePercentage(
