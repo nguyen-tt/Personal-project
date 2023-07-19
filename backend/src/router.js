@@ -14,6 +14,7 @@ router.delete("/items/:id", itemControllers.destroy);
 
 router.get("/foods", foodsControllers.browse);
 router.get("/foods/:id", foodsControllers.read);
+router.put("/foods/:id", foodsControllers.edit);
 
 router.get("/users", usersControllers.browse);
 router.get("/users/:id", usersControllers.read);

@@ -1,0 +1,22 @@
+@charset "utf-8";
+
+/**
+ * @site Personal Project
+ * @author Trung Nguyen
+ */
+
+@use "sass/base/mixins";
+@use "sass/variables";
+@use "sass/base/reset";
+@use "sass/base/print";
+
+/* pages */
+@use "sass/home";
+@use "sass/game";
+@use "sass/summary";
+@use "sass/contact";
+@use "sass/login";
+@use "sass/notfound";
+
+/* components */
+@use "sass/gameboard";
