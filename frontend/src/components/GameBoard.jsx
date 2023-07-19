@@ -21,7 +21,7 @@ function GameBoard() {
       .catch((err) => {
         console.error(err);
       });
-  }, []);
+  }, [selectionCount]);
 
   const updateVote = (imageId, newVote) => {
     axios
@@ -61,15 +61,6 @@ function GameBoard() {
     setHasVoted(null);
     if (selectionCount === 4) {
       setGameOver(true);
-    } else {
-      axios
-        .get(`${host}/foods`)
-        .then((res) =>
-          setImagesFood(res.data.sort(() => Math.random() - 0.5).slice(0, 2))
-        )
-        .catch((err) => {
-          console.error(err);
-        });
     }
   };
 
@@ -86,9 +77,7 @@ function GameBoard() {
                 src={`${host}/assets/images/${image.img}`}
                 alt={image.title}
               />
-              {selectedImage === image.id && image.vote && (
-                <p>{image.vote} votes</p>
-              )}
+              {selectedImage && <p>{image.vote} votes</p>}
             </div>
           ))}
           {selectedImage && (
