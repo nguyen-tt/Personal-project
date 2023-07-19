@@ -39,7 +39,7 @@ function UpdateForm({ foodId }) {
     <div>
       <h2>Modifier le titre et l'image</h2>
       <form onSubmit={handleSubmit} encType="multipart/form-data">
-        <label htmlFor="title">Nouveau titre :</label>
+        <label htmlFor="title">Modifier le titre :</label>
         <input
           type="text"
           id="title"
@@ -48,7 +48,7 @@ function UpdateForm({ foodId }) {
           onChange={handleInputChange}
         />
         <br />
-        <label htmlFor="image">Nouvelle image :</label>
+        <label htmlFor="image">Modifier l'image :</label>
         <input
           type="file"
           id="image"

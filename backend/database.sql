@@ -20,7 +20,7 @@ CREATE TABLE users (
   createdDate DATETIME NOT NULL DEFAULT NOW()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO foods (title, img) VALUES 
-('Pho', 'pho.jpg'), ('Ramen', 'ramen.jpg'), ('Burger', 'burger.jpg'), ('Sushi', 'sushi.jpg'), ('Pizza', 'pizza.jpg'), ('Kebab', 'kebab.jpg'), ('Boeuf bourguignon', 'boeuf-bourguignon.jpg');
+INSERT INTO foods (title, img, vote) VALUES 
+('Pho', 'pho.jpg', 50), ('Ramen', 'ramen.jpg', 40), ('Burger', 'burger.jpg', 30), ('Sushi', 'sushi.jpg', 20), ('Pizza', 'pizza.jpg', 100), ('Kebab', 'kebab.jpg', 5), ('Boeuf bourguignon', 'boeuf-bourguignon.jpg', 3);
 
 INSERT INTO users (email, password, role) VALUES ('admin@admin.com', '123456', 1);
