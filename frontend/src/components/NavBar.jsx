@@ -15,12 +15,6 @@ function NavBar() {
       <NavLink to="/update-game" className="update-game-link">
         update-game
       </NavLink>
-      {/* <NavLink to="/contact" className="contact-link">
-        contact
-      </NavLink>
-      <NavLink to="/login" className="login-link">
-        login
-      </NavLink> */}
     </div>
   );
 }

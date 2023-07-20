@@ -1,84 +1,120 @@
 .ranking {
-  background-color: #ffcfc6;
-  .top-one {
-    display: flex;
-    justify-content: center;
-    figure {
-      position: relative;
-    }
-    .top-one-figure {
-      width: 30rem;
-    }
-    .top-one-figure::before {
-      content: "";
-      position: absolute;
-      width: 5rem;
-      height: 5rem;
-      // background: url(@assets/medaille.png) no-repeat center;
-      background-color: red;
-    }
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background-color: var(--brown-color);
+  padding: 5rem 0;
+  text-align: center;
+  .eyes {
+    position: absolute;
+    top: 5rem;
+    right: 0;
+    width: 20rem;
   }
-  .top-two-three {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    figure {
-      position: relative;
+
+  .inside-ranking {
+    border: 2px dashed var(--border-color);
+    border-radius: 15px 15px 0 0;
+    background-color: var(--primary-color);
+    padding: 5rem 0;
+    width: 95vw;
+    min-height: 75.7vh;
+    .top-one {
+      display: flex;
+      justify-content: center;
+      margin-top: 5rem;
+      figure {
+        position: relative;
+      }
+      figcaption {
+        margin-top: 1.5rem;
+        font-weight: bold;
+      }
+      .top-one-figure {
+        width: 30rem;
+      }
+      .top-one-figure::before {
+        content: "";
+        position: absolute;
+        top: -30px;
+        left: -10px;
+        width: 10rem;
+        height: 10rem;
+        background: url(@assets/couronne.svg) no-repeat center;
+      }
     }
-    .top-image-1 {
-      width: 22rem;
-    }
-    .top-image-1:before {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 5rem;
-      height: 5rem;
-      background-color: blue;
-    }
-    .top-image-2 {
-      width: 18rem;
-    }
-    .top-image-2:before {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 5rem;
-      height: 5rem;
-      background-color: green;
-    }
-  }
-  .remaining-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    .index-container {
+    .top-two-three {
       display: flex;
       align-items: center;
-      margin-top: 1.5rem;
-      span {
-        font-size: 3rem;
-        margin-right: 2rem;
-        background-color: #bcbefa;
-        height: 5rem;
-        width: 5rem;
-        border-radius: 10px 0 0 10px;
+      justify-content: space-evenly;
+      figure {
+        position: relative;
       }
-      .remaining-detail {
-        figure {
-          display: flex;
-          align-items: center;
-          justify-content: space-evenly;
-          background-color: #bcbefa;
+      figcaption {
+        margin-top: 1.5rem;
+        font-weight: bold;
+      }
+      .top-image-1 {
+        width: 22rem;
+      }
+      .top-image-1:before {
+        content: "";
+        position: absolute;
+        bottom: 40px;
+        right: 0;
+        width: 8.5rem;
+        height: 8.5rem;
+        background: url(@assets/top2.svg) no-repeat center;
+      }
+      .top-image-2 {
+        width: 18rem;
+      }
+      .top-image-2:before {
+        content: "";
+        position: absolute;
+        bottom: 40px;
+        right: -1px;
+        width: 7rem;
+        height: 7rem;
+        background: url(@assets/top3.svg) no-repeat center;
+      }
+    }
+    .remaining-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+      .index-container {
+        display: flex;
+        align-items: center;
+        margin-top: 1.5rem;
+        span {
+          font-family: "Bartex", sans-serif;
+          font-size: 3rem;
+          margin-right: 2rem;
+          background-color: var(--secondary-color);
+          box-shadow: 1px 1px 1px 2px var(--brown-color);
           height: 5rem;
-          width: 30rem;
-          border-radius: 0 10px 10px 0;
-        }
-        img {
           width: 5rem;
+          border-radius: 10px 0 0 10px;
+        }
+        .remaining-detail {
+          figure {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            background-color: var(--secondary-color);
+            box-shadow: 1px 1px 1px 2px var(--brown-color);
+            height: 5rem;
+            width: 30rem;
+            border-radius: 0 10px 10px 0;
+          }
+          figcaption {
+            font-weight: bold;
+          }
+          img {
+            width: 5rem;
+          }
         }
       }
     }

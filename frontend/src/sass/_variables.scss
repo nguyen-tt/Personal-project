@@ -2,7 +2,26 @@
 
 // Variables
 
+/* button home */
 @import url("https://fonts.googleapis.com/css2?family=Kanit&display=swap");
 
+/* num ranking */
+@font-face {
+  font-family: Bartex;
+  src: url("/src/assets/fonts/Bartex.ttf") format("truetype");
+}
+
+/* body */
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,200&display=swap");
+
 :root {
+  --primary-color: #feded8;
+  --secondary-color: #ffcfc6;
+  --brown-color: #692d1a;
+  --border-color: #563f3b;
+
+  body {
+    font-family: "DM Sans", sans-serif;
+    font-size: 1.5rem;
+  }
 }

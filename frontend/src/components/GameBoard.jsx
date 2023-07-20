@@ -4,6 +4,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import versus from "@assets/versus.svg";
 
 function GameBoard() {
   const host = import.meta.env.VITE_BACKEND_URL;
@@ -75,7 +76,7 @@ function GameBoard() {
       {gameOver ? (
         <>
           <p>Fin du jeu</p>
-          <Link to="/summary" className="endgame-button">
+          <Link to="/ranking" className="endgame-button">
             <button type="button">Voir les résultats</button>
           </Link>
         </>
@@ -102,17 +103,18 @@ function GameBoard() {
                     imagesFood.reduce((total, img) => total + img.vote, 0)
                   )}%`}
               </p>
-              {selectedImage && <p>{image.vote} votes</p>}
             </div>
           ))}
-          <span className="versus">VS</span>
-          {selectedImage && (
-            <button type="button" onClick={handleNextClick}>
-              Suivant
-            </button>
-          )}
         </div>
       )}
+      <div className="bottom-container">
+        <img className="versus" src={versus} alt="versus" />
+        {selectedImage && (
+          <button type="button" onClick={handleNextClick}>
+            Suivant
+          </button>
+        )}
+      </div>
     </div>
   );
 }

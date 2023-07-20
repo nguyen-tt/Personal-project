@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import logo from "@assets/Logo-2.png";
 import decoEtoile from "@assets/deco-etoile.svg";
 import etoile from "@assets/etoile.png";
+import footer from "@assets/footer.png";
 
 function Home() {
   return (
@@ -16,6 +17,12 @@ function Home() {
           </Link>
           <img className="stars-deco" src={decoEtoile} alt="star decoration" />
           <img className="star-deco2" src={etoile} alt="star decoration" />
+        </div>
+        <div className="footer">
+          <div className="bgFooter-top">
+            <img src={footer} alt="background footer" />
+          </div>
+          <div className="bgFooter-bot" />
         </div>
       </div>
     </div>

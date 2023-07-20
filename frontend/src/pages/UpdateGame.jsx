@@ -146,7 +146,7 @@ function UpdateGame() {
         </Dialog>
 
         <Box sx={{ mt: 1 }}>
-          <List>
+          <List className="list-food">
             <TransitionGroup>
               {foods.map((food) => (
                 <Collapse key={food.id}>
