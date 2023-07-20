@@ -4,6 +4,11 @@ import UpdateForm from "@components/UpdateForm";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+
 function UpdateGame() {
   const host = import.meta.env.VITE_BACKEND_URL;
   const [foods, setFoods] = useState([]);
@@ -40,19 +45,24 @@ function UpdateGame() {
     <div>
       <AddForm />
       <h1>Liste</h1>
-      <select
-        value={selectedFood}
-        onChange={(e) =>
-          setSelectedFood(e.target.value !== "--" && e.target.value)
-        }
-      >
-        <option value="--"> -- </option>
-        {foods.map((food) => (
-          <option key={food.id} value={food.id}>
-            {food.title}
-          </option>
-        ))}
-      </select>
+      <FormControl fullWidth>
+        <InputLabel id="food-label">Food</InputLabel>
+        <Select
+          labelId="select-food-label"
+          id={selectedFood}
+          value={selectedFood}
+          label="Food"
+          onChange={(e) =>
+            setSelectedFood(e.target.value !== "--" && e.target.value)
+          }
+        >
+          {foods.map((food) => (
+            <MenuItem key={food.id} value={food.id}>
+              {food.title}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
 
       {selectedFoodData && (
         <>
