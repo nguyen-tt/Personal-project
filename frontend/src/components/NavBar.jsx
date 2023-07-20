@@ -3,24 +3,24 @@ import { NavLink } from "react-router-dom";
 function NavBar() {
   return (
     <div>
-      <NavLink to="/" className="home">
+      <NavLink to="/" className="home-link">
         home
       </NavLink>
-      <NavLink to="/game" className="game">
+      <NavLink to="/game" className="game-link">
         game
       </NavLink>
       <NavLink to="/ranking" className="ranking-link">
         ranking
       </NavLink>
-      <NavLink to="/update-game" className="update-game">
+      <NavLink to="/update-game" className="update-game-link">
         update-game
       </NavLink>
-      <NavLink to="/contact" className="contact">
+      {/* <NavLink to="/contact" className="contact-link">
         contact
       </NavLink>
-      <NavLink to="/login" className="login">
+      <NavLink to="/login" className="login-link">
         login
-      </NavLink>
+      </NavLink> */}
     </div>
   );
 }

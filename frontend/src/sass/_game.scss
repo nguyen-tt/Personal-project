@@ -1,0 +1,36 @@
+.game {
+  min-height: 100vh;
+  background-color: #feded8;
+}
+
+.gameboard {
+  height: 100%;
+
+  .image-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .image-food-0 {
+      position: absolute;
+      top: 10%;
+      left: 15%;
+    }
+    .image-food-1 {
+      position: absolute;
+      top: 55%;
+      right: 15%;
+    }
+    .img-foods {
+      width: 40rem;
+      cursor: pointer;
+    }
+  }
+
+  .versus {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    font-size: 5rem;
+    font-weight: bold;
+  }
+}

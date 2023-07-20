@@ -1,3 +1,86 @@
 .ranking {
   background-color: #ffcfc6;
+  .top-one {
+    display: flex;
+    justify-content: center;
+    figure {
+      position: relative;
+    }
+    .top-one-figure {
+      width: 30rem;
+    }
+    .top-one-figure::before {
+      content: "";
+      position: absolute;
+      width: 5rem;
+      height: 5rem;
+      // background: url(@assets/medaille.png) no-repeat center;
+      background-color: red;
+    }
+  }
+  .top-two-three {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    figure {
+      position: relative;
+    }
+    .top-image-1 {
+      width: 22rem;
+    }
+    .top-image-1:before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 5rem;
+      height: 5rem;
+      background-color: blue;
+    }
+    .top-image-2 {
+      width: 18rem;
+    }
+    .top-image-2:before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 5rem;
+      height: 5rem;
+      background-color: green;
+    }
+  }
+  .remaining-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    .index-container {
+      display: flex;
+      align-items: center;
+      margin-top: 1.5rem;
+      span {
+        font-size: 3rem;
+        margin-right: 2rem;
+        background-color: #bcbefa;
+        height: 5rem;
+        width: 5rem;
+        border-radius: 10px 0 0 10px;
+      }
+      .remaining-detail {
+        figure {
+          display: flex;
+          align-items: center;
+          justify-content: space-evenly;
+          background-color: #bcbefa;
+          height: 5rem;
+          width: 30rem;
+          border-radius: 0 10px 10px 0;
+        }
+        img {
+          width: 5rem;
+        }
+      }
+    }
+  }
 }

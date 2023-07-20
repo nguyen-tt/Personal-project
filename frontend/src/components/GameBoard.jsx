@@ -25,7 +25,6 @@ function GameBoard() {
   }, [selectionCount]);
 
   const updateVote = (imageId, newVote) => {
-    console.log(imageId, newVote);
     axios
       .put(`${host}/foods/${imageId}`, { vote: newVote })
       .then(() => {
@@ -72,7 +71,7 @@ function GameBoard() {
   };
 
   return (
-    <div>
+    <div className="gameboard">
       {gameOver ? (
         <>
           <p>Fin du jeu</p>
@@ -81,13 +80,18 @@ function GameBoard() {
           </Link>
         </>
       ) : (
-        <>
-          {imagesFood.map((image) => (
-            <div key={image.id} onClick={() => handleSelect(image.id)}>
+        <div className="image-container">
+          {imagesFood.map((image, index) => (
+            <div
+              key={image.id}
+              className={`image-food-${index}`}
+              onClick={() => handleSelect(image.id)}
+            >
               <figure>
                 <img
                   src={`${host}/assets/images/${image.img}`}
                   alt={image.title}
+                  className="img-foods"
                 />
                 <figcaption>{image.title}</figcaption>
               </figure>
@@ -101,12 +105,13 @@ function GameBoard() {
               {selectedImage && <p>{image.vote} votes</p>}
             </div>
           ))}
+          <span className="versus">VS</span>
           {selectedImage && (
             <button type="button" onClick={handleNextClick}>
               Suivant
             </button>
           )}
-        </>
+        </div>
       )}
     </div>
   );

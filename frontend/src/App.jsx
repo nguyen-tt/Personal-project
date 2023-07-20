@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
 
 import "./styles.scss";
 
@@ -25,6 +26,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <Footer />
       </Router>
     </div>
   );
