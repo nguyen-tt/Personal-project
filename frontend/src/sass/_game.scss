@@ -15,6 +15,7 @@
   font-size: 2rem;
   figcaption {
     font-weight: bold;
+    margin-top: 5rem;
   }
 
   .image-container {
@@ -24,12 +25,23 @@
     text-align: center;
     width: 100vw;
     .img-foods {
-      width: 40rem;
+      width: 35rem;
       cursor: pointer;
+      transition: all 0.2s ease-in-out;
     }
-    .image-food-0 {
+    .img-foods:hover {
+      transform: scale(1.1);
     }
+    .image-food-0,
     .image-food-1 {
+      &.selected {
+        transform: scale(1.3);
+        pointer-events: none;
+      }
+      &.voted {
+        filter: grayscale(100%);
+        pointer-events: none;
+      }
     }
   }
   .bottom-container {
@@ -39,6 +51,33 @@
     .versus {
       margin-bottom: 3rem;
       width: 30rem;
+    }
+    .next-button {
+      border: none;
+      font-family: "Wendy One", sans-serif;
+      color: #ffa01b;
+      cursor: pointer;
+      position: relative;
+      text-shadow: -6px 6px 0 #e8476a, -9px 9px 0 purple;
+      font-size: 10vmin;
+    }
+    .next-button:after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 5px;
+      bottom: -10px;
+      left: -4px;
+      transform: scaleX(0);
+      box-shadow: 0 5px 0 #e8476a, 0 10px 0 purple;
+      background: #ffa01b;
+      transform-origin: bottom right;
+      transition: transform 0.5s ease-out;
+    }
+
+    .next-button:hover:after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
     }
   }
 }

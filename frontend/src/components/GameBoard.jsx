@@ -5,6 +5,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import versus from "@assets/versus.svg";
+import classnames from "classnames";
 
 function GameBoard() {
   const host = import.meta.env.VITE_BACKEND_URL;
@@ -85,7 +86,10 @@ function GameBoard() {
           {imagesFood.map((image, index) => (
             <div
               key={image.id}
-              className={`image-food-${index}`}
+              className={classnames(`image-food-${index}`, {
+                selected: selectedImage === image.id,
+                voted: hasVoted && selectedImage !== image.id,
+              })}
               onClick={() => handleSelect(image.id)}
             >
               <figure>
@@ -108,10 +112,14 @@ function GameBoard() {
         </div>
       )}
       <div className="bottom-container">
-        <img className="versus" src={versus} alt="versus" />
+        {!gameOver && <img className="versus" src={versus} alt="versus" />}
         {selectedImage && (
-          <button type="button" onClick={handleNextClick}>
-            Suivant
+          <button
+            className="next-button"
+            type="button"
+            onClick={handleNextClick}
+          >
+            Next !
           </button>
         )}
       </div>
