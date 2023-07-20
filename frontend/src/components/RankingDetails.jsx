@@ -57,7 +57,7 @@ function RankingDetails() {
         {remainingDetails.map((detail, index) => {
           const currentIndex = 4 + index;
           return (
-            <div className="index-container">
+            <div className="index-container" key={detail.id}>
               <span>{currentIndex}</span>
               <div key={detail.id} className="remaining-detail">
                 <figure>

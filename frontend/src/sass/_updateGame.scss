@@ -1,0 +1,25 @@
+.updategame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  img {
+    width: 7rem;
+  }
+  .list-item {
+    text-align: center;
+    width: 30rem;
+  }
+}
+.delete-confirm-form {
+  padding: 8rem;
+  background-color: #ffcfc6;
+
+  p {
+    font-size: 2.5rem;
+  }
+  .button-confirmation {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 2rem;
+  }
+}

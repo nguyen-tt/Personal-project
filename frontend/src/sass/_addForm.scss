@@ -1,0 +1,19 @@
+.addForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 40vh;
+  padding: 10rem;
+  h2 {
+    font-size: 5rem;
+  }
+  .add-form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+  }
+  button {
+    font-size: 1.5rem;
+  }
+}

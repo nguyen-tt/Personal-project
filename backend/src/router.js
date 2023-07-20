@@ -22,8 +22,8 @@ router.get("/foods/:id", foodsControllers.read);
 router.put(
   "/foods/:id",
   upload.single("image"),
-  uploadFile.postFile,
-  foodsControllers.edit
+  foodsControllers.edit,
+  uploadFile.postFile
 );
 router.post(
   "/foods",

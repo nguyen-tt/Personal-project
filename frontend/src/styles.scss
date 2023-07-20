@@ -14,6 +14,7 @@
 @use "sass/home";
 @use "sass/game";
 @use "sass/ranking";
+@use "sass/updateGame";
 @use "sass/contact";
 @use "sass/login";
 @use "sass/notfound";
@@ -21,3 +22,5 @@
 /* components */
 @use "sass/gameboard";
 @use "sass/footer";
+@use "sass/addForm";
+@use "sass/updateForm";

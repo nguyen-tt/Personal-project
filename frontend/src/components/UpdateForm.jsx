@@ -1,65 +1,128 @@
+/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-restricted-syntax */
 import axios from "axios";
-import { useState } from "react";
 
-function UpdateForm({ foodId }) {
+import Button from "@mui/material/Button";
+import { MuiFileInput } from "mui-file-input";
+import { Controller, useForm } from "react-hook-form";
+import { Alert, createTheme, Slide, Snackbar, TextField } from "@mui/material";
+import { useState } from "react";
+import { ThemeProvider } from "@mui/material/styles";
+
+function UpdateForm({ food }) {
   const host = import.meta.env.VITE_BACKEND_URL;
-  const [foods, setFoods] = useState({
-    title: "",
-    image: null,
+  const [open, setOpen] = useState(false);
+  const { control, handleSubmit } = useForm({
+    defaultValues: {
+      title: "",
+      img: undefined,
+    },
   });
 
-  const handleInputChange = (e) => {
-    const { name, value, files } = e.target;
-    setFoods({
-      ...foods,
-      [name]: files ? files[0] : value,
-    });
-  };
+  const theme = createTheme({
+    typography: {
+      fontSize: 30,
+      palette: {
+        error: {
+          main: "#e57373",
+        },
+      },
+    },
+  });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const onSubmit = (data) => {
+    const updatedData = {
+      title: data.title || food.title,
+      image: data.image || undefined,
+    };
 
     const formData = new FormData();
-    formData.append("title", foods.title);
-    formData.append("image", foods.image);
+    formData.append("title", updatedData.title);
+    if (updatedData.image) {
+      formData.append("image", updatedData.image);
+    }
 
     axios
-      .put(`${host}/foods/${foodId}`, formData)
+      .put(`${host}/foods/${food.id}`, formData)
       .then((response) => {
-        console.log("Successfully modified", response.data);
+        console.log("successfuly modified", response.data);
+        setOpen(true);
       })
       .catch((error) => {
-        console.error("Error while modifying", error);
+        console.error(error);
       });
   };
 
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
+
   return (
-    <div>
-      <h2>Modifier le titre et l'image</h2>
-      <form onSubmit={handleSubmit} encType="multipart/form-data">
-        <label htmlFor="title">Modifier le titre :</label>
-        <input
-          type="text"
-          id="title"
-          name="title"
-          value={foods.title}
-          onChange={handleInputChange}
-        />
-        <br />
-        <label htmlFor="image">Modifier l'image :</label>
-        <input
-          type="file"
-          id="image"
-          name="image"
-          accept="image/jpeg,image/png,image/tiff"
-          onChange={handleInputChange}
-        />
-        <br />
-        <button type="submit">Mettre à jour</button>
-      </form>
-    </div>
+    <ThemeProvider theme={theme}>
+      <div className="updateForm">
+        <h2>{food.title}</h2>
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="update-form-container"
+        >
+          <Controller
+            name="title"
+            control={control}
+            render={({ field, fieldState }) => (
+              <TextField
+                {...field}
+                sx={{ input: { backgroundColor: "white" } }}
+                className="food-name-input"
+                helperText={fieldState.invalid ? "Food name is required" : ""}
+                error={fieldState.invalid}
+                label="Change food name"
+                variant="outlined"
+              />
+            )}
+          />
+          <Controller
+            name="image"
+            control={control}
+            render={({ field, fieldState }) => (
+              <MuiFileInput
+                {...field}
+                // color="error"
+                // focused
+                label="Select new image"
+                helperText={fieldState.invalid ? "Image is required" : ""}
+                error={fieldState.invalid}
+              />
+            )}
+          />
+          <div>
+            <Button type="submit" variant="contained" sx={{ mt: 2 }}>
+              Confirm change
+            </Button>
+            <Snackbar
+              open={open}
+              autoHideDuration={6500}
+              onClose={handleClose}
+              TransitionComponent={Slide}
+              anchorOrigin={{ vertical: "top", horizontal: "center" }}
+            >
+              <Alert
+                onClose={handleClose}
+                severity="success"
+                sx={{ width: "100%" }}
+                variant="filled"
+              >
+                Successfully modifying
+              </Alert>
+            </Snackbar>
+          </div>
+        </form>
+      </div>
+    </ThemeProvider>
   );
 }
 
