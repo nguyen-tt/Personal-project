@@ -7,7 +7,7 @@ import UpdateGame from "./pages/UpdateGame";
 import Login from "./pages/Login";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
-import NavBar from "./components/NavBar";
+// import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 
 import "./styles.scss";
@@ -16,7 +16,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <NavBar />
+        {/* <NavBar /> */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/game" element={<Game />} />
