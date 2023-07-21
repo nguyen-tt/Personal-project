@@ -17,3 +17,4 @@ __Step 2__: Launch `npm install`
 __Step 3__: Create a `.env` file  
 __Step 4__: Launch `npm run migrate`  
 __Step 5__: Launch `npm run dev`  
+
