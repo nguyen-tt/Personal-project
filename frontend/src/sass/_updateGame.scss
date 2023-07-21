@@ -29,8 +29,8 @@
         background-size: 200% 100%;
         transition: 0.8s;
         cursor: pointer;
-        color: #e7d1b2;
-        text-shadow: 2px 2px 0px #563f3b;
+        color: var(--primary-color);
+        text-shadow: 2px 2px 0px var(--brown-color);
         text-transform: uppercase;
         font-family: "Kanit", sans-serif;
         font-size: 3rem;
@@ -60,7 +60,7 @@
 }
 .delete-confirm-form {
   padding: 3rem 10rem;
-  background-color: #ffcfc6;
+  background-color: var(--secondary-color);
   @media screen and (max-width: 768px) {
     padding: 3rem 2rem;
   }

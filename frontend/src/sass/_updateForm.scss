@@ -4,7 +4,7 @@
   justify-content: space-evenly;
   height: 40vh;
   padding: 10rem;
-  background-color: #ffcfc6;
+  background-color: var(--secondary-color);
   @media screen and (max-width: 768px) {
     padding: 3rem 2rem;
   }

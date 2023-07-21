@@ -9,7 +9,11 @@ const upload = multer({ dest: "./public/assets/images" });
 const itemControllers = require("./controllers/itemControllers");
 const foodsControllers = require("./controllers/foodsControllers");
 const usersControllers = require("./controllers/usersControllers");
+const loginControllers = require("./controllers/loginControllers");
+
 const uploadFile = require("./services/uploadFile");
+const validateLogin = require("./services/validateLogin");
+const hashPassword = require("./services/hashPassword");
 
 router.get("/items", itemControllers.browse);
 router.get("/items/:id", itemControllers.read);
@@ -35,5 +39,13 @@ router.delete("/foods/:id", foodsControllers.destroy);
 
 router.get("/users", usersControllers.browse);
 router.get("/users/:id", usersControllers.read);
+router.post("/users", hashPassword, usersControllers.create);
+
+router.post(
+  "/login",
+  validateLogin,
+  loginControllers.login,
+  loginControllers.verifyPassword
+);
 
 module.exports = router;
