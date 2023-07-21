@@ -12,4 +12,4 @@ Food Duel offers an entertaining and user-friendly platform for food enthusiasts
 
 ## Setup & Use
 
-Cloning this repo, launch `npm install`, `npm run migrate` then `npm run dev`.
+Cloning this repo, launch `npm install`, create a `.env` file, `npm run migrate` then `npm run dev`.
