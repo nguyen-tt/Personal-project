@@ -28,7 +28,23 @@ const read = (req, res) => {
     });
 };
 
+const create = (req, res) => {
+  const { email, password, role } = req.body;
+  models.users
+    .create(email, password, role)
+    .then(([rows]) => {
+      res.status(201).json({ id: rows.insertId });
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json({
+        error: "L’inscription n’a pas pu être effectuée avec succès.",
+      });
+    });
+};
+
 module.exports = {
   browse,
   read,
+  create,
 };
