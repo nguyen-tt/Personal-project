@@ -2,25 +2,78 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: var(--brown-color);
+  padding: 5rem 0;
+  .inside-updategame {
+    border: 2px dashed var(--border-color);
+    border-radius: 15px 15px 0 0;
+    background-color: var(--primary-color);
+    padding-bottom: 5rem;
+    width: 95vw;
+    .inside-up {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .btn-add {
+        padding: 0 15rem;
+        margin-bottom: 2rem;
+        background: #b1c188;
+        background-image: linear-gradient(
+          to left,
+          transparent,
+          transparent 50%,
+          #f0a30a 50%,
+          #f0a30a
+        );
+        background-position: 100% 0;
+        background-size: 200% 100%;
+        transition: 0.8s;
+        cursor: pointer;
+        color: #e7d1b2;
+        text-shadow: 2px 2px 0px #563f3b;
+        text-transform: uppercase;
+        font-family: "Kanit", sans-serif;
+        font-size: 3rem;
+        font-weight: 700;
+      }
+      .btn-add:hover {
+        background-position: 0 0;
+        transition: 0.8s;
+      }
 
-  img {
-    width: 7rem;
-  }
-  .list-item {
-    text-align: center;
-    width: 30rem;
+      img {
+        width: 7rem;
+      }
+      .list-food {
+        display: flex;
+        align-items: center;
+        @media screen and (max-width: 768px) {
+          width: 100vw;
+        }
+      }
+      .list-item {
+        text-align: center;
+        width: 50rem;
+      }
+    }
   }
 }
 .delete-confirm-form {
-  padding: 8rem;
+  padding: 3rem 10rem;
   background-color: #ffcfc6;
+  @media screen and (max-width: 768px) {
+    padding: 3rem 2rem;
+  }
 
   p {
-    font-size: 2.5rem;
+    font-size: 3rem;
   }
   .button-confirmation {
     display: flex;
     justify-content: space-evenly;
     margin-top: 2rem;
+    button {
+      padding: 0 5rem;
+    }
   }
 }

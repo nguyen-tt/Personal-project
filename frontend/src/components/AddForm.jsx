@@ -54,7 +54,7 @@ function AddForm({ onAddFoodToList }) {
   return (
     <ThemeProvider theme={theme}>
       <div className="addForm">
-        <h2>ADD NEW FOOD</h2>
+        <span>AJOUTE UN COMBATTANT</span>
         <form onSubmit={handleSubmit(onSubmit)} className="add-form-container">
           <Controller
             name="title"
@@ -63,14 +63,11 @@ function AddForm({ onAddFoodToList }) {
             render={({ field, fieldState }) => (
               <TextField
                 {...field}
-                // sx={{ input: { color: "red" } }}
-                // color="secondary"
-                // focused
-
                 className="food-name-input"
+                sx={{ input: { backgroundColor: "white" } }}
                 helperText={fieldState.invalid ? "Food name is required" : ""}
                 error={fieldState.invalid}
-                label="Food name"
+                label="Nom"
                 variant="outlined"
               />
             )}
@@ -82,9 +79,8 @@ function AddForm({ onAddFoodToList }) {
             render={({ field, fieldState }) => (
               <MuiFileInput
                 {...field}
-                // color="secondary"
-                // focused
-                label="Select an image"
+                label="Selectionne une image"
+                sx={{ input: { backgroundColor: "white" } }}
                 helperText={fieldState.invalid ? "Image is required" : ""}
                 error={fieldState.invalid}
               />
@@ -92,7 +88,7 @@ function AddForm({ onAddFoodToList }) {
           />
           <div>
             <Button type="submit" variant="contained" sx={{ mt: 2 }}>
-              Submit
+              Valider
             </Button>
             <Snackbar
               open={open}
@@ -107,7 +103,7 @@ function AddForm({ onAddFoodToList }) {
                 sx={{ width: "100%" }}
                 variant="filled"
               >
-                Successfuly created
+                Bienvenue au nouveau combattant !
               </Alert>
             </Snackbar>
           </div>

@@ -2,20 +2,52 @@
   background-color: var(--brown-color);
   display: flex;
   justify-content: center;
-  padding: 5rem 0;
+  min-height: 100vh;
 }
-
 .gameboard {
   border: 2px dashed var(--border-color);
   border-radius: 15px 15px 0 0;
   background-color: var(--primary-color);
-  padding: 5rem 0;
   width: 95vw;
-  min-height: 75.7vh;
+  max-height: 86vh;
+  margin-top: 5rem;
   font-size: 2rem;
-  figcaption {
-    font-weight: bold;
-    margin-top: 5rem;
+  .endgame-container {
+    position: relative;
+    top: 20rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .button-view-ranking {
+      padding: 3rem 15rem;
+      background: #b1c188;
+      background-image: linear-gradient(
+        to left,
+        transparent,
+        transparent 50%,
+        #f0a30a 50%,
+        #f0a30a
+      );
+      background-position: 100% 0;
+      background-size: 200% 100%;
+      transition: 0.8s;
+      cursor: pointer;
+      color: #e7d1b2;
+      text-shadow: 2px 2px 0px #563f3b;
+      text-transform: uppercase;
+      font-family: "Kanit", sans-serif;
+      font-size: 3rem;
+      font-weight: 700;
+    }
+
+    .button-view-ranking:hover {
+      background-position: 0 0;
+      transition: 0.8s;
+    }
+    figcaption {
+      font-weight: bold;
+      margin-top: 5rem;
+    }
   }
 
   .image-container {
@@ -23,9 +55,8 @@
     justify-content: space-evenly;
     align-items: center;
     text-align: center;
-    width: 100vw;
     .img-foods {
-      width: 35rem;
+      width: 28rem;
       cursor: pointer;
       transition: all 0.2s ease-in-out;
     }
@@ -50,7 +81,7 @@
     align-items: center;
     .versus {
       margin-bottom: 3rem;
-      width: 30rem;
+      width: 20rem;
     }
     .next-button {
       border: none;
@@ -59,7 +90,7 @@
       cursor: pointer;
       position: relative;
       text-shadow: -6px 6px 0 #e8476a, -9px 9px 0 purple;
-      font-size: 10vmin;
+      font-size: 6vmin;
     }
     .next-button:after {
       content: "";
@@ -78,6 +109,24 @@
     .next-button:hover:after {
       transform: scaleX(1);
       transform-origin: bottom left;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .image-container {
+      .img-foods {
+        width: 20rem;
+        margin-top: 10rem;
+      }
+    }
+    .endgame-container {
+      .button-view-ranking {
+        padding: 3rem 10%;
+      }
+    }
+    .bottom-container {
+      .versus {
+        width: 10rem;
+      }
     }
   }
 }

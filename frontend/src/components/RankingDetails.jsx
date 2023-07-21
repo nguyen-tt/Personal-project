@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import eyes from "@assets/yeux.svg";
+import NavBar from "./NavBar";
 
 function RankingDetails() {
   const host = import.meta.env.VITE_BACKEND_URL;
@@ -27,6 +28,7 @@ function RankingDetails() {
   return (
     <div className="ranking">
       <div className="inside-ranking">
+        <NavBar />
         <div className="top-one">
           {details.slice(0, 1).map((detail) => (
             <div key={detail.id} className="top-one-detail">

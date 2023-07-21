@@ -80,7 +80,7 @@ function UpdateForm({ food }) {
                 className="food-name-input"
                 helperText={fieldState.invalid ? "Food name is required" : ""}
                 error={fieldState.invalid}
-                label="Change food name"
+                label="Nouveau nom"
                 variant="outlined"
               />
             )}
@@ -91,9 +91,7 @@ function UpdateForm({ food }) {
             render={({ field, fieldState }) => (
               <MuiFileInput
                 {...field}
-                // color="error"
-                // focused
-                label="Select new image"
+                label="Selectionne une image"
                 helperText={fieldState.invalid ? "Image is required" : ""}
                 error={fieldState.invalid}
               />
@@ -101,7 +99,7 @@ function UpdateForm({ food }) {
           />
           <div>
             <Button type="submit" variant="contained" sx={{ mt: 2 }}>
-              Confirm change
+              Valider
             </Button>
             <Snackbar
               open={open}
@@ -116,7 +114,7 @@ function UpdateForm({ food }) {
                 sx={{ width: "100%" }}
                 variant="filled"
               >
-                Successfully modifying
+                Combattant modifié !
               </Alert>
             </Snackbar>
           </div>

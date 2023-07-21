@@ -5,6 +5,9 @@
   height: 40vh;
   padding: 10rem;
   background-color: #ffcfc6;
+  @media screen and (max-width: 768px) {
+    padding: 3rem 2rem;
+  }
   h2 {
     font-size: 5rem;
   }

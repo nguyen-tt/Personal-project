@@ -1,10 +1,9 @@
 .ranking {
   display: flex;
-  align-items: flex-end;
   justify-content: center;
+  text-align: center;
   background-color: var(--brown-color);
   padding: 5rem 0;
-  text-align: center;
   .eyes {
     position: absolute;
     top: 5rem;
@@ -16,13 +15,11 @@
     border: 2px dashed var(--border-color);
     border-radius: 15px 15px 0 0;
     background-color: var(--primary-color);
-    padding: 5rem 0;
+    padding-bottom: 5rem;
     width: 95vw;
-    min-height: 75.7vh;
     .top-one {
       display: flex;
       justify-content: center;
-      margin-top: 5rem;
       figure {
         position: relative;
       }
@@ -116,6 +113,21 @@
             width: 5rem;
           }
         }
+      }
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .ranking {
+    .eyes {
+      display: none;
+    }
+    .inside-ranking {
+      .top-one {
+        margin-top: 5rem;
+      }
+      .top-two-three {
+        margin-bottom: 3rem;
       }
     }
   }

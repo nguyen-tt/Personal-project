@@ -21,6 +21,7 @@ import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { ThemeProvider } from "@mui/material/styles";
+import NavBar from "@components/NavBar";
 
 function UpdateGame() {
   const host = import.meta.env.VITE_BACKEND_URL;
@@ -75,28 +76,30 @@ function UpdateGame() {
 
   const renderFood = ({ food }) => {
     return (
-      <ListItem className="list-item">
-        <img
-          key={food.id}
-          src={`${host}/assets/images/${food.img}`}
-          alt={food.title}
-        />
-        <ListItemText primary={food.title} secondary={`${food.vote} votes`} />
-        <IconButton
-          aria-label="settings"
-          title="Settings"
-          onClick={() => handleOpenUpdate(food.id)}
-        >
-          <SettingsIcon />
-        </IconButton>
-        <IconButton
-          aria-label="delete"
-          title="Delete"
-          onClick={() => handleOpenDeleteConfirm(food.id)}
-        >
-          <DeleteIcon />
-        </IconButton>
-      </ListItem>
+      <div className="list-food">
+        <ListItem className="list-item">
+          <img
+            key={food.id}
+            src={`${host}/assets/images/${food.img}`}
+            alt={food.title}
+          />
+          <ListItemText primary={food.title} secondary={`${food.vote} votes`} />
+          <IconButton
+            aria-label="settings"
+            title="Settings"
+            onClick={() => handleOpenUpdate(food.id)}
+          >
+            <SettingsIcon />
+          </IconButton>
+          <IconButton
+            aria-label="delete"
+            title="Delete"
+            onClick={() => handleOpenDeleteConfirm(food.id)}
+          >
+            <DeleteIcon />
+          </IconButton>
+        </ListItem>
+      </div>
     );
   };
 
@@ -132,84 +135,98 @@ function UpdateGame() {
   return (
     <ThemeProvider theme={theme}>
       <div className="updategame">
-        <Button variant="outlined" onClick={() => setOpenAdd(true)}>
-          Add new food
-        </Button>
+        <div className="inside-updategame">
+          <NavBar />
+          <div className="inside-up">
+            <Button className="btn-add" onClick={() => setOpenAdd(true)}>
+              +
+            </Button>
 
-        <Dialog
-          open={openAdd}
-          onClose={() => setOpenAdd(false)}
-          TransitionComponent={Slide}
-          TransitionProps={{ direction: "up" }}
-        >
-          <AddForm onAddFoodToList={handleAddFoodToList} />
-        </Dialog>
+            <Dialog
+              open={openAdd}
+              onClose={() => setOpenAdd(false)}
+              TransitionComponent={Slide}
+              TransitionProps={{ direction: "up" }}
+            >
+              <AddForm onAddFoodToList={handleAddFoodToList} />
+            </Dialog>
 
-        <Box sx={{ mt: 1 }}>
-          <List className="list-food">
-            <TransitionGroup>
-              {foods.map((food) => (
-                <Collapse key={food.id}>
-                  {renderFood({ food, handleRemoveFood })}
-                </Collapse>
-              ))}
-              <Dialog
-                open={openUpdate}
-                onClose={() => setOpenUpdate(false)}
-                TransitionComponent={Slide}
-                TransitionProps={{ direction: "up" }}
-              >
-                {selectedFoodData && <UpdateForm food={selectedFoodData} />}
-              </Dialog>
-              {selectedFoodData && (
-                <Dialog
-                  open={openDeleteConfirm}
-                  onClose={() => setOpenDeleteConfirm(false)}
-                  TransitionComponent={Slide}
-                  TransitionProps={{ direction: "up" }}
-                >
-                  <form
-                    onSubmit={(e) => {
-                      e.preventDefault();
-                      handleRemoveFood();
-                      setOpenDeleteConfirm(false);
-                    }}
-                    onReset={cancelRemove}
-                    className="delete-confirm-form"
+            <Box sx={{ mt: 1 }}>
+              <List>
+                <TransitionGroup>
+                  {foods.map((food) => (
+                    <Collapse key={food.id}>
+                      {renderFood({ food, handleRemoveFood })}
+                    </Collapse>
+                  ))}
+                  <Dialog
+                    open={openUpdate}
+                    onClose={() => setOpenUpdate(false)}
+                    TransitionComponent={Slide}
+                    TransitionProps={{ direction: "up" }}
                   >
-                    <p>
-                      Are you sure to delete <b>{selectedFoodData.title}</b> ?
-                    </p>
-                    <div className="button-confirmation">
-                      <Button type="submit" variant="contained" sx={{ mt: 2 }}>
-                        Yes
-                      </Button>
-                      <Button type="reset" variant="contained" sx={{ mt: 2 }}>
-                        No
-                      </Button>
-                    </div>
-                  </form>
-                </Dialog>
-              )}
-            </TransitionGroup>
-          </List>
-        </Box>
-        <Snackbar
-          open={openAlert}
-          autoHideDuration={6000}
-          onClose={handleClose}
-          TransitionComponent={Slide}
-          anchorOrigin={{ vertical: "top", horizontal: "center" }}
-        >
-          <Alert
-            onClose={handleClose}
-            severity="success"
-            sx={{ width: "100%" }}
-            variant="filled"
-          >
-            Successfuly deleted
-          </Alert>
-        </Snackbar>
+                    {selectedFoodData && <UpdateForm food={selectedFoodData} />}
+                  </Dialog>
+                  {selectedFoodData && (
+                    <Dialog
+                      open={openDeleteConfirm}
+                      onClose={() => setOpenDeleteConfirm(false)}
+                      TransitionComponent={Slide}
+                      TransitionProps={{ direction: "up" }}
+                    >
+                      <form
+                        onSubmit={(e) => {
+                          e.preventDefault();
+                          handleRemoveFood();
+                          setOpenDeleteConfirm(false);
+                        }}
+                        onReset={cancelRemove}
+                        className="delete-confirm-form"
+                      >
+                        <p>
+                          Es-tu sûr de vouloir supprimer{" "}
+                          <b>{selectedFoodData.title}</b> ?
+                        </p>
+                        <div className="button-confirmation">
+                          <Button
+                            type="submit"
+                            variant="contained"
+                            sx={{ mt: 2 }}
+                          >
+                            Oui
+                          </Button>
+                          <Button
+                            type="reset"
+                            variant="contained"
+                            sx={{ mt: 2 }}
+                          >
+                            Non
+                          </Button>
+                        </div>
+                      </form>
+                    </Dialog>
+                  )}
+                </TransitionGroup>
+              </List>
+            </Box>
+            <Snackbar
+              open={openAlert}
+              autoHideDuration={6000}
+              onClose={handleClose}
+              TransitionComponent={Slide}
+              anchorOrigin={{ vertical: "top", horizontal: "center" }}
+            >
+              <Alert
+                onClose={handleClose}
+                severity="success"
+                sx={{ width: "100%" }}
+                variant="filled"
+              >
+                Un combattant s'est enfui !
+              </Alert>
+            </Snackbar>
+          </div>
+        </div>
       </div>
     </ThemeProvider>
   );

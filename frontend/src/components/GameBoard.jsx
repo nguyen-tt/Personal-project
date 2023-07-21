@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import versus from "@assets/versus.svg";
 import classnames from "classnames";
+import NavBar from "./NavBar";
 
 function GameBoard() {
   const host = import.meta.env.VITE_BACKEND_URL;
@@ -29,9 +30,7 @@ function GameBoard() {
   const updateVote = (imageId, newVote) => {
     axios
       .put(`${host}/foods/${imageId}`, { vote: newVote })
-      .then(() => {
-        console.log("Vote updated successfully!");
-      })
+      .then(() => {})
       .catch((err) => {
         console.error(err);
       });
@@ -74,13 +73,15 @@ function GameBoard() {
 
   return (
     <div className="gameboard">
+      <NavBar />
       {gameOver ? (
-        <>
-          <p>Fin du jeu</p>
+        <div className="endgame-container">
           <Link to="/ranking" className="endgame-button">
-            <button type="button">Voir les résultats</button>
+            <button type="button" className="button-view-ranking">
+              Voir les résultats
+            </button>
           </Link>
-        </>
+        </div>
       ) : (
         <div className="image-container">
           {imagesFood.map((image, index) => (
@@ -119,7 +120,7 @@ function GameBoard() {
             type="button"
             onClick={handleNextClick}
           >
-            Next !
+            Suivant !
           </button>
         )}
       </div>

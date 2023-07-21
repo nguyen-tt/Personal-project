@@ -43,6 +43,9 @@
         font-family: "Kanit", sans-serif;
         font-size: 3rem;
         font-weight: 700;
+        @media screen and (max-width: 768px) {
+          padding: 3rem 8rem;
+        }
       }
 
       .button-home:hover {
