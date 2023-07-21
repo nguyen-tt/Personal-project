@@ -25,21 +25,36 @@
       right: 7rem;
       top: 5rem;
       color: var(--brown-color);
+      @media screen and (max-width: 768px) {
+        right: 5rem;
+        top: 4rem;
+      }
     }
 
     img {
       width: 30rem;
       z-index: 1;
+      @media screen and (max-width: 768px) {
+        width: 20rem;
+      }
     }
     span {
       font-family: "Lilita One", cursive;
       font-size: 20rem;
+      @media screen and (max-width: 768px) {
+        font-size: 12rem;
+      }
     }
     p {
       position: relative;
       right: 2rem;
       bottom: 8rem;
       font-size: 5rem;
+      @media screen and (max-width: 768px) {
+        font-size: 3rem;
+        right: 1rem;
+        bottom: 5rem;
+      }
     }
   }
   .footer {
